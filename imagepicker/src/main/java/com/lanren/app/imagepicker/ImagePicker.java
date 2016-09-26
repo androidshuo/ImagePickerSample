@@ -1,5 +1,6 @@
 package com.lanren.app.imagepicker;
 
+import android.Manifest;
 import android.app.ActionBar;
 import android.app.Activity;
 import android.app.Dialog;
@@ -10,6 +11,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.content.pm.PackageInfo;
 import android.content.res.Resources;
 import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
@@ -21,6 +23,7 @@ import android.support.annotation.AnimRes;
 import android.support.annotation.IntDef;
 import android.support.annotation.LayoutRes;
 import android.support.annotation.StyleRes;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.app.AlertDialog;
 import android.text.TextUtils;
@@ -551,6 +554,7 @@ public class ImagePicker extends ViewGroup{
         private static final String INTENT_FIELD_CANCEL = "cancel";
         private static final String INTENT_FIELD_LAYOUT = "layout";
         private static final String INTENT_FIELD_EXIT_ANIMATION = "exit_animation";
+        private static final int REQUEST_PERMISSION_CAMERA = 0xa001;
         private @AnimRes
         int mExitAnimation;
         private Uri mCaptureTargetUri;
@@ -630,6 +634,19 @@ public class ImagePicker extends ViewGroup{
             }
         }
 
+        // Attempt to invoke a camera before that checking the permission.
+        private void attemptTakePicture(){
+            if(Build.VERSION.SDK_INT >= Build.VERSION_CODES.M){
+                if(ActivityCompat.checkSelfPermission(this, Manifest.permission_group.CAMERA) == PackageInfo.REQUESTED_PERMISSION_GRANTED){
+                    dispatchTakePictureIntent();
+                }else{
+                    requestPermissions(new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE, Manifest.permission.CAMERA}, REQUEST_PERMISSION_CAMERA);
+                }
+            }else{
+                dispatchTakePictureIntent();
+            }
+        }
+
         private void dispatchTakePictureIntent() {
             mCaptureTargetUri = createImageUri();
             Intent intent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
@@ -653,6 +670,16 @@ public class ImagePicker extends ViewGroup{
             intent.putExtra(Intent.EXTRA_LOCAL_ONLY, true);
             intent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
             startActivityForResult(intent, REQUEST_IMAGE_PICK);
+        }
+
+        @Override
+        public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+            if(grantResults != null && grantResults[0] == PackageInfo.REQUESTED_PERMISSION_GRANTED){
+                if(requestCode == REQUEST_PERMISSION_CAMERA){
+                    dispatchTakePictureIntent();
+                }
+            }
+            super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
 
         @Override
