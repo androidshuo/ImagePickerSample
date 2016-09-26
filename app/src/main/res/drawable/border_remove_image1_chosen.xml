@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@mipmap/ic_remove_image1">
+    </item>
+    <item>
+        <shape android:shape="oval">
+            <solid/>
+            <stroke android:width="3dp" android:color="#f7d309" />
+        </shape>
+    </item>
+</layer-list>

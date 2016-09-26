@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android" >
+    <item
+        android:drawable="@mipmap/image_picker_dialog2">
+    </item>
+    <item>
+        <shape>
+            <solid/>
+            <stroke android:width="3dp" android:color="#f7d309" />
+        </shape>
+    </item>
+</layer-list>

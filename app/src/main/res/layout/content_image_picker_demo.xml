@@ -1,0 +1,292 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context=".ImagePickerDemo"
+    tools:showIn="@layout/activity_image_picker_demo">
+
+    <com.lanren.app.imagepicker.ImagePicker
+        android:id="@+id/ip"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:focusableInTouchMode="true"
+        app:canRemoving="true"
+        app:dialogLayout="@layout/dialog_photo_picker1"
+        app:locationType="topRight"
+        app:addDrawable="@mipmap/ic_add_image1"
+        app:removeDrawable="@mipmap/ic_delete"
+        app:showConfirmDialog="true"
+        app:imageWidth="72dp"
+        app:imageHeight="72dp"
+        app:removeButtonWidth="18dp"
+        app:removeButtonHeight="18dp"
+        app:removeButtonOffset="8dp"
+        app:takingText="@string/take_photo"
+        app:pickingText="@string/select_photo"
+        app:cancelText="@string/cancel"
+        app:pickerDialogEnterAnimation="@anim/push_bottom_in"
+        app:pickerDialogExitAnimation="@anim/push_bottom_out"
+        >
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff"
+            android:scaleType="fitXY" />
+    </com.lanren.app.imagepicker.ImagePicker>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="@dimen/general_margin"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <!--addDrawable-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="添加前显示的图片(addDrawable)：" />
+
+                    <RadioGroup
+                        android:id="@+id/add_drawable_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/add_drawable_rb1"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:background="@drawable/selector_add_image1"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/add_drawable_rb2"
+                            android:layout_width="56dp"
+                            android:layout_height="56dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/selector_add_image2"
+                            android:button="@null" />
+                    </RadioGroup>
+                </LinearLayout>
+                <!--removeDrawable-->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="添加删除图标(removeDrawable)：" />
+
+                    <RadioGroup
+                        android:id="@+id/remove_drawable_rg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+
+                        <RadioButton
+                            android:id="@+id/remove_drawable_rb1"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:background="@drawable/selector_remove_image1"
+                            android:button="@null" />
+
+                        <RadioButton
+                            android:id="@+id/remove_drawable_rb2"
+                            android:layout_width="24dp"
+                            android:layout_height="24dp"
+                            android:layout_marginLeft="8dp"
+                            android:background="@drawable/selector_remove_image2"
+                            android:button="@null" />
+                    </RadioGroup>
+                </LinearLayout>
+                <!--takingText-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                    <com.lanren.app.imagepickersample.ClearableEditText
+                        android:id="@+id/takingText_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="拍照文字(takingText):" />
+                </android.support.design.widget.TextInputLayout>
+                <!--pickingText-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                    <EditText
+                        android:id="@+id/pickingText_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="从相册选择文字(pickingText):" />
+                </android.support.design.widget.TextInputLayout>
+                <!--cancelText-->
+                <android.support.design.widget.TextInputLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin">
+
+                    <EditText
+                        android:id="@+id/cancelText_et"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:hint="取消文字(cancelText):" />
+                </android.support.design.widget.TextInputLayout>
+                <!--canRemoving-->
+                <CheckBox
+                    android:id="@+id/can_removing_ck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:checked="true"
+                    android:text="是否可以删除(canRemoving)" />
+                <!--showConfirmDialog-->
+                <CheckBox
+                    android:id="@+id/show_confirm_dialog_ck"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/activity_vertical_margin"
+                    android:checked="true"
+                    android:text="删除时是否显示确认框(showConfirmDialog)" />
+            </LinearLayout>
+            <!--dialogLayout-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="拍照弹出框(dialogLayout)：" />
+
+                <RadioGroup
+                    android:id="@+id/dialog_layout_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <RadioButton
+                        android:id="@+id/dialog_layout_rb1"
+                        android:layout_width="108dp"
+                        android:layout_height="56dp"
+                        android:background="@drawable/selector_picker_dialog1"
+                        android:button="@null" />
+
+                    <RadioButton
+                        android:id="@+id/dialog_layout_rb2"
+                        android:layout_width="108dp"
+                        android:layout_height="56dp"
+                        android:layout_marginLeft="8dp"
+                        android:background="@drawable/selector_picker_dialog2"
+                        android:button="@null" />
+                </RadioGroup>
+            </LinearLayout>
+            <!--mLocationType-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="删除图标位置(mLocationType)：" />
+
+                <RadioGroup
+                    android:id="@+id/location_type_rg"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal"
+                    android:checkedButton="@+id/location_type_rb2">
+
+                    <RadioButton
+                        android:id="@+id/location_type_rb1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="上左"
+                        />
+
+                    <RadioButton
+                        android:id="@+id/location_type_rb2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="上右"
+                        />
+                    <RadioButton
+                        android:id="@+id/location_type_rb3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="下左"
+                         />
+
+                    <RadioButton
+                        android:id="@+id/location_type_rb4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="8dp"
+                        android:text="下右"
+                         />
+                </RadioGroup>
+            </LinearLayout>
+            <!--mOffset-->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/activity_vertical_margin"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="删除图标偏距(removeButtonOffset):" />
+
+                <SeekBar
+                    android:id="@+id/offset_seekbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:max="16"
+                    android:progress="8" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="expandAnimation" format="reference"/>
+    <attr name="collapseAnimation" format="reference"/>
+    <declare-styleable name="ImagePicker">
+        <attr name="addDrawable" format="reference"/>
+        <attr name="imageWidth" format="dimension"/>
+        <attr name="imageHeight" format="dimension"/>
+        <attr name="removeDrawable" format="reference"/>
+        <attr name="removeButtonWidth" format="dimension"/>
+        <attr name="removeButtonHeight" format="dimension"/>
+        <attr name="takingText" format="string"/>
+        <attr name="pickingText" format="string"/>
+        <attr name="cancelText" format="string"/>
+        <attr name="canRemoving" format="boolean"/>
+        <attr name="showConfirmDialog" format="boolean"/>
+        <attr name="dialogLayout" format="reference"/>
+        <attr name="removeButtonOffset" format="dimension"/>
+        <attr name="locationType" format="enum">
+            <enum name="topLeft" value="0"/>
+            <enum name="topRight" value="1"/>
+            <enum name="bottomLeft" value="2"/>
+            <enum name="bottomRight" value="3"/>
+        </attr>
+        <attr name="pickerDialogEnterAnimation" format="reference"/>
+        <attr name="pickerDialogExitAnimation" format="reference"/>
+        <attr name="pickerDialogStyle" format="reference"/>
+    </declare-styleable>
+
+</resources>
